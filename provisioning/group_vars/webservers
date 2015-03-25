@@ -3,4 +3,5 @@
 # These don't have to be explicitly imported by vars_files: they are autopopulated.
 
 httpd_port: 80
-repository: https://github.com/bennojoy/mywebapp.git
+repository: https://github.com/drupal/drupal.git
+branch: 7.x
