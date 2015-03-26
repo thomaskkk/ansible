@@ -7,6 +7,9 @@
    - httpd
    - php
    - php-mysql
+   - php-gd
+   - php-dom
+   - php-mbstring
    - git
    - libsemanage-python
    - libselinux-python

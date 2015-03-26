@@ -5,3 +5,11 @@
 httpd_port: 80
 repository: https://github.com/drupal/drupal.git
 branch: 7.x
+extra_path: $HOME/.composer/vendor/bin:$PATH
+drupal_db_url: mysql://drupal:abc@localhost/drupal
+drupal_locale: pt_BR
+drupal_admin_mail: thomas.adm@gmail.com
+drupal_admin_name: admin
+drupal_admin_pass: admin
+drupal_site_name: thomas site
+drupal_site_mail: thomas.adm@gmail.com

@@ -2,8 +2,8 @@
 # These tasks are responsible for copying the latest dev/production code from
 # the version control system. 
 
-- name: Copy the code from repository (drupal)
-  git: repo={{ repository }} version={{ branch }} dest=/var/www/html/
+#- name: Copy the code from repository (drupal)
+#  git: repo={{ repository }} version={{ branch }} dest=/var/www/html/
 
 - name: install composer
   shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
@@ -14,7 +14,21 @@
   tags: composer
 
 - name: make composer executable
-  file: path=/usr/local/bin/composer mode=a+x state=file
+  file: path=/usr/local/bin/composer mode=755 state=file
   tags: composer
 
+- name: copy composer.json
+  copy: src=composer.json dest=/var/www/html/
+  tags: composer
 
+- name: install drush via composer
+  shell: /usr/local/bin/composer install chdir=/var/www/html/
+  tags: composer
+
+- name: create drush symlink
+  file: src=/var/www/html/vendor/bin/drush dest=/usr/bin/drush state=link
+  tags: drush
+
+- name: install drupal
+  shell: drush site-install standard --yes --db-url={{ drupal_db_url }} --locale={{ drupal_locale }} --account-mail={{ drupal_admin_mail }} --account-name={{ drupal_admin_name }} --account-pass={{ drupal_admin_pass }} --site-name={{ drupal_site_name }} --site-mail={{ drupal_site_mail }} chdir=/var/www/html/
+  tags: drush
