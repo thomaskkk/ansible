@@ -8,16 +8,16 @@
   roles:
     - common
 
-- name: configure and deploy the webservers and application code
-  hosts: webservers
-  remote_user: vagrant
-
-  roles:
-    - web
-
 - name: deploy MySQL and configure the databases
   hosts: dbservers
   remote_user: vagrant
 
   roles:
     - db
+
+- name: configure and deploy the webservers and application code
+  hosts: webservers
+  remote_user: vagrant
+
+  roles:
+    - web
