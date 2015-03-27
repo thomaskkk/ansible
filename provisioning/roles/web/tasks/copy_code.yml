@@ -36,7 +36,3 @@
 - name: create drush symlink
   file: src=/var/www/html/vendor/bin/drush dest=/usr/bin/drush state=link
   tags: drush
-
-- name: install drupal
-  shell: drush site-install standard --yes --db-url="{{ drupal_db_url }}" --locale="{{ drupal_locale }}" --account-mail="{{ drupal_admin_mail }}" --account-name="{{ drupal_admin_name }}" --account-pass="{{ drupal_admin_pass }}" --site-mail="{{ drupal_site_mail }}" --site-name="{{ drupal_site_name }}" chdir=/var/www/html/
-  tags: drush
