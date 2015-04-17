@@ -3,12 +3,12 @@
 # These don't have to be explicitly imported by vars_files: they are autopopulated.
 
 httpd_port: 80
-repository: https://github.com/drupal/drupal.git
-version: b44056d2f8e8c71d35c85ec5c2fb8f7c8a02d8a8
-extra_path: $HOME/.composer/vendor/bin:$PATH
-drupal_core_path: /var/www/html/
+extra_path: "$HOME/.composer/vendor/bin"
+drupal_repo_url: https://github.com/drupal/drupal.git
+drupal_core_version: "7.x"
+drupal_keep_updated: yes
+drupal_core_path: /var/www/html
 drupal_install_profile: standard
-drush_makefile_path: 
 drupal_db_url: mysql://drupal:abc@192.168.77.31/drupal
 drupal_locale: pt_BR
 drupal_admin_mail: thomas.adm@gmail.com

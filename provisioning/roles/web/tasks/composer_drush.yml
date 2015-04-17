@@ -1,0 +1,42 @@
+---
+- name: Check if composer is already set up.
+  stat: "path=/usr/bin/composer"
+  register: composer_set
+  notify: checking if composer is already set
+  tags: composer
+
+- name: install composer
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin creates=/usr/bin/composer
+  sudo: yes
+  when: composer_set.stat.exists == false
+  tags: composer
+
+- name: rename composer.phar to composer
+  shell: mv /usr/bin/composer.phar /usr/bin/composer creates=/usr/bin/composer
+  sudo: yes
+  when: composer_set.stat.exists == false
+  tags: composer
+
+- name: make composer executable
+  file: path=/usr/bin/composer mode=755 state=file
+  sudo: yes
+  when: composer_set.stat.exists == false
+  tags: composer
+
+- name: Check if drush is already set up.
+  stat: "path=/usr/bin/drush"
+  register: drush_set
+  notify: checking if drush is already set
+  tags: drush
+
+- name: install drush via composer
+  shell: composer require drush/drush:dev-master chdir=/usr/local/share creates=/usr/local/share/vendor/drush/drush/drush
+  sudo: yes
+  when: drush_set.stat.exists == false
+  tags: drush
+
+- name: create drush symlink
+  file: src=/usr/local/share/vendor/drush/drush/drush dest=/usr/bin/drush state=link
+  sudo: yes
+  when: drush_set.stat.exists == false
+  tags: drush

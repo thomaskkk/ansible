@@ -4,3 +4,8 @@
 
 - name: restart iptables
   service: name=iptables state=restarted
+  sudo: yes
+
+- name: restart webservice
+  service: name=httpd state=restarted
+  sudo: yes

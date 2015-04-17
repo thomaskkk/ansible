@@ -19,8 +19,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         machine.vm.provision :ansible do |ansible|
           ansible.playbook = "provisioning/playbook.yml"
           ansible.inventory_path = "provisioning/hosts_development"
-          ansible.sudo = "true"
-          ansible.host_key_checking = "false"
           # uncomment for debug
           #ansible.verbose = "vvvv"
         end
@@ -36,8 +34,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         machine.vm.provision :ansible do |ansible|
           ansible.playbook = "provisioning/playbook.yml"
           ansible.inventory_path = "provisioning/hosts_stage"
-          ansible.sudo = "true"
-          ansible.host_key_checking = "false"
         end
       end
 
@@ -57,8 +53,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         machine.vm.provision :ansible do |ansible|
           ansible.playbook = "provisioning/playbook.yml"
           ansible.inventory_path = "provisioning/hosts_production"
-          ansible.sudo = "true"
-          ansible.host_key_checking = "false"
         end
       end
 

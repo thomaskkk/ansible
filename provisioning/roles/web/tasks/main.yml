@@ -1,4 +1,4 @@
 ---
 - include: install_httpd.yml
-- include: copy_code.yml
+- include: composer_drush.yml
 - include: drupal.yml

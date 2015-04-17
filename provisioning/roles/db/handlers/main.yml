@@ -3,6 +3,8 @@
 
 - name: restart mysql
   service: name=mysqld state=restarted
+  sudo: yes
 
 - name: restart iptables
   service: name=iptables state=restarted
+  sudo: yes
