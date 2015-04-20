@@ -2,17 +2,41 @@
 # The variables file used by the playbooks in the webservers group.
 # These don't have to be explicitly imported by vars_files: they are autopopulated.
 
+# Httpd serve port
 httpd_port: 80
-extra_path: "$HOME/.composer/vendor/bin"
+
+# Drupal repository to push if no files are on the server
 drupal_repo_url: https://github.com/drupal/drupal.git
+
+# Drupal version
 drupal_core_version: "7.x"
-drupal_keep_updated: yes
+
+# Keep updating files at every provision
+drupal_keep_updated: no
+
+# Drupal core httpd path
 drupal_core_path: /var/www/html
+
+# Drupal install profile
 drupal_install_profile: standard
+
+# Drupal database url
 drupal_db_url: mysql://drupal:abc@192.168.77.31/drupal
+
+# Drupal locale
 drupal_locale: pt_BR
+
+# Drupal admin email
 drupal_admin_mail: thomas.adm@gmail.com
+
+# Drupal admin Username
 drupal_admin_name: admin
+
+# Drupal admin Password
 drupal_admin_pass: admin
+
+# Drupal site name
 drupal_site_name: thomas site
+
+# Drupal site email
 drupal_site_mail: thomas.adm@gmail.com

@@ -2,9 +2,18 @@
 # The variables file used by the playbooks in the dbservers group.
 # These don't have to be explicitly imported by vars_files: they are autopopulated.
 
+# Mysql service name for drupal application 
 mysqlservice: mysqld
-mysql_port: 3306
-dbname: drupal
-dbuser: drupal
-upassword: abc
 
+# Mysql port for drupal application 
+mysql_port: 3306
+
+
+# Database name for the drupal application
+dbname: drupal
+
+# Mysql Username for drupal application 
+dbuser: drupal
+
+# Mysql Password for drupal application
+upassword: abc

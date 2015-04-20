@@ -29,3 +29,4 @@ $ vagrant box add just/centos-6.5 https://github.com/2creatives/vagrant-centos/r
 ```bash
 $ vagrant up
 ```
+Your server(s) will be ready on the IP address added on the provisioning/hosts_* file.
