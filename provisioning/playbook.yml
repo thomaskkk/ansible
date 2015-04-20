@@ -8,7 +8,7 @@
   roles:
     - common
 
-- name: deploy MySQL and configure the databases
+- name: configure and deploy MySQL and configure the databases
   hosts: dbservers
   remote_user: vagrant
 
@@ -21,3 +21,10 @@
 
   roles:
     - web
+
+- name: configure and deploy the cache servers
+  hosts: varnish
+  remote_user: vagrant
+
+  roles:
+    - varnish

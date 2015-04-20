@@ -1,0 +1,24 @@
+---
+# These tasks install varnish
+
+- name: Install Varnish
+  yum: name={{ item }} state=present
+  with_items:
+   - varnish
+  sudo: yes
+  tags: varnish
+
+- name: Configure VCL
+  sudo: yes
+  template:
+    src: default.vcl
+    dest: /etc/varnish/default.vcl
+  tags: varnish
+
+- name: Configure Varnish
+  sudo: yes
+  template:
+    src: varnish
+    dest: /etc/sysconfig/varnish
+  notify: restart varnish
+  tags: varnish

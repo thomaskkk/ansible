@@ -1,0 +1,32 @@
+---
+# The variables file used by the playbooks in the varnish group.
+# These don't have to be explicitly imported by vars_files: they are autopopulated.
+
+# Maximum number of open files (for ulimit -n)
+nfiles: 131072
+
+# Locked shared memory (for ulimit -l)
+# Default log size is 82MB + header
+memlock: 82000
+
+# Set this to 1 to make init script reload try to switch vcl without restart.
+# To make this work, you need to set the following variables
+# explicit: VARNISH_VCL_CONF, VARNISH_ADMIN_LISTEN_ADDRESS,
+# VARNISH_ADMIN_LISTEN_PORT, VARNISH_SECRET_FILE, or in short,
+# use Alternative 3, Advanced configuration, below
+reload_vcl: 1
+
+vlcfile_location: /etc/varnish/default.vcl
+secretfile_location: /etc/varnish/secret
+
+varnish_user: varnish
+varnish_group: varnish
+
+varnish_port: 6081
+varnish_source_addressport: "localhost:6082"
+varnish_storage_type: file
+varnish_storage_location: /var/lib/varnish/varnish_storage.bin
+varnish_storage_size: 1G
+
+varnish_vcl_host: 127.0.0.1
+varnish_vcl_port: 80

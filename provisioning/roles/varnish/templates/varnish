@@ -1,0 +1,12 @@
+NFILES={{ nfiles }}
+
+MEMLOCK={{ memlock }}
+
+RELOAD_VCL={{ reload_vcl }}
+
+DAEMON_OPTS="-a :{{ varnish_port }} \
+             -T {{ varnish_source_addressport }} \
+             -f {{ vlcfile_location }} \
+             -u {{ varnish_user }} -g {{ varnish_group }} \
+             -S {{ secretfile_location }} \
+             -s {{ varnish_storage_type }},{{ varnish_storage_location }},{{ varnish_storage_size }}"
