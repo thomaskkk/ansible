@@ -1,0 +1,12 @@
+---
+# The variables file used by the playbooks in the lbservers group.
+# These don't have to be explicitly imported by vars_files: they are autopopulated.
+
+global_log: "127.0.0.1 local2"
+global_chroot: /var/lib/haproxy
+global_pidfile: /var/run/haproxy.pid
+global_maxconn: 4000
+global_user: haproxy
+global_group: haproxy
+global_daemon: 
+   

@@ -1,11 +1,9 @@
 ---
-# These tasks install varnish
+# This playbook will install and configure varnish.
 
 - name: Install Varnish
-  yum: name={{ item }} state=present
-  with_items:
-   - varnish
   sudo: yes
+  yum: name=varnish state=present
   tags: varnish
 
 - name: Configure VCL

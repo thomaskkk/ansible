@@ -28,3 +28,10 @@
 
   roles:
     - varnish
+
+- name: configure and deploy the loadbalance servers
+  hosts: lbservers
+  remote_user: vagrant
+
+  roles:
+    - lb

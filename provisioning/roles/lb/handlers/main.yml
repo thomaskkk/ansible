@@ -1,0 +1,7 @@
+---
+# Specify here any handler you may have available to control your service.
+# http://www.ansibleworks.com/docs/playbooks.html#handlers-running-operations-on-change
+
+- name: restart loadballance
+  sudo: yes
+  service: name=haproxy state=restarted

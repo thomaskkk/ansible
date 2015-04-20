@@ -1,0 +1,15 @@
+---
+# This playbook will install and configure HaProxy.
+
+- name: Install HaProxy
+  sudo: yes
+  yum: name=haproxy state=present
+  tags: haproxy
+
+- name: Configure HaProxy
+  sudo: yes
+  template:
+    src: haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+  notify: restart loadballance
+  tags: haproxy
