@@ -31,15 +31,23 @@
   sudo: yes
   when: drupal_site.stat.exists == false
 
+- name: setting permissions on drupal (sites/default/files)
+  file: path=/var/www/html/sites/default/files state=directory mode=775 recurse=yes
+  sudo: yes
+
+- name: setting group permissions to apache
+  file: path=/var/www/html state=directory group=apache recurse=yes
+  sudo: yes
+
 - name: Install Drupal (standard profile) with drush.
   command: >
     drush si {{ drupal_install_profile | default('standard') }} -y
     --locale="{{ drupal_locale }}"
     --site-name="{{ drupal_site_name }}"
     --site-mail="{{ drupal_site_mail }}"
-    --account-name={{ drupal_admin_name }}"
-    --account-pass={{ drupal_admin_pass }}"
-    --account-mail={{ drupal_admin_mail }}
+    --account-name="{{ drupal_admin_name }}"
+    --account-pass="{{ drupal_admin_pass }}"
+    --account-mail="{{ drupal_admin_mail }}"
     --db-url="{{ drupal_db_url }}"
     chdir={{ drupal_core_path }}
   sudo: yes

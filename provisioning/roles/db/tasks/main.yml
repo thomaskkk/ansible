@@ -27,12 +27,6 @@
   sudo: yes
   tags: mysql
 
-- name: insert iptables rule
-  lineinfile: dest=/etc/sysconfig/iptables-config state=present regexp="{{ mysql_port }}"
-              insertafter="^:OUTPUT " line="-A INPUT -p tcp  --dport {{ mysql_port }} -j  ACCEPT"
-  sudo: yes
-  notify: restart iptables
-
 - name: Create Application Database
   mysql_db: name={{ dbname }} state=present
   sudo: yes
