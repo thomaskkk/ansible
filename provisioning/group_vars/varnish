@@ -22,11 +22,23 @@ secretfile_location: /etc/varnish/secret
 varnish_user: varnish
 varnish_group: varnish
 
-varnish_port: 6081
+# Porta onde varnish vai responder ao usuário final
+varnish_port: 80
+
+# Endereço da fonte do Varnish (geralmente é localhost:6082)
 varnish_source_addressport: "localhost:6082"
+
+# Tipo de armazenamento de cache do varnish
 varnish_storage_type: file
+
+# Local de armazenamento do cache do varnish
 varnish_storage_location: /var/lib/varnish/varnish_storage.bin
+
+# Tamanho de armazenamento de cache do varnish
 varnish_storage_size: 1G
 
+# Endereço do servidor web a ser cacheado
 varnish_vcl_host: 127.0.0.1
-varnish_vcl_port: 80
+
+# Porta do servidore web a ser cacheado
+varnish_vcl_port: 8080

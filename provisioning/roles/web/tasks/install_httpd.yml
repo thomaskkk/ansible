@@ -22,6 +22,12 @@
   notify: restart webserver
   tags: httpd
 
+- name: change http listen port
+  lineinfile: dest=/etc/httpd/conf/httpd.conf regexp="^Listen " insertafter="^#Listen " line="Listen 8080"
+  sudo: yes
+  notify: restart webserver
+  tags: httpd
+
 - name: http service state
   service: name=httpd state=started enabled=yes
   sudo: yes
