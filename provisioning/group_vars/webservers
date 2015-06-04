@@ -5,11 +5,17 @@
 # Httpd serve port
 httpd_port: 80
 
+# Drush version to install via composer
+drush_version: 7.*@dev
+
 # Drupal repository to push if no files are on the server
 drupal_repo_url: https://github.com/drupal/drupal.git
 
+# Drupal core version
+drupal_core_version: 7.x
+
 # Drupal version
-drupal_core_version: "7.x"
+drupal_version: 7.37
 
 # Keep updating files at every provision
 drupal_keep_updated: no
@@ -24,7 +30,7 @@ drupal_install_profile: standard
 drupal_db_url: mysql://drupal:abc@192.168.77.31/drupal
 
 # Drupal locale
-drupal_locale: pt_BR
+drupal_locale: pt-br
 
 # Drupal admin email
 drupal_admin_mail: thomas.adm@gmail.com

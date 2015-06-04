@@ -30,7 +30,7 @@
   tags: drush
 
 - name: install drush via composer
-  shell: composer require drush/drush:dev-master chdir=/usr/local/share creates=/usr/local/share/vendor/drush/drush/drush
+  shell: composer require drush/drush:{{ drush_version }} chdir=/usr/local/share creates=/usr/local/share/vendor/drush/drush/drush
   sudo: yes
   when: drush_set.stat.exists == false
   tags: drush

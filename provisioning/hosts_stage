@@ -4,8 +4,8 @@ web1 ansible_ssh_host=192.168.77.31 ansible_ssh_port=22
 [varnish]
 web1
 
-#[memcache]
-#web1
+[memcached]
+web1
 
 [dbservers]
 web1

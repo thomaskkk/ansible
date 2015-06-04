@@ -1,0 +1,17 @@
+# Drush Make API version
+api: 2
+
+# Versão do Drupal core
+core: {{ drupal_core_version }}
+
+# Puxa o drupal core
+projects:
+  drupal:
+    type: "core"
+    version: "{{ drupal_version }}"
+    download:
+      type: "git"
+      url: "{{ drupal_repo_url }}"
+
+# Tenta puxar a tradução pt-br
+translations: "{{ drupal_locale }}"

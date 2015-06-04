@@ -2,6 +2,10 @@
 # Specify here any handler you may have available to control your service.
 # http://www.ansibleworks.com/docs/playbooks.html#handlers-running-operations-on-change
 
-- name: restart loadballance
+- name: restart memcached
   sudo: yes
-  service: name=haproxy state=restarted
+  service: name=memcached state=restarted
+
+- name: reload memcached
+  sudo: yes
+  service: name=memcached state=reloaded

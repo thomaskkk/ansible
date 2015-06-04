@@ -4,15 +4,17 @@
   register: drupal_site
   notify: checking if drupal is already set
 
-#- name: Copy drush makefile.
-#  copy: src=drush.make dest=/var/www/html/
-#  sudo: yes
-#  when: drupal_site.stat.exists == false
+- name: Copy drush makefile.
+  template:
+    src: drush.make.yml
+    dest: /var/www/html/
+  sudo: yes
+  when: drupal_site.stat.exists == false
 
-#- name: Generate Drupal site with drush makefile.
-#  command: drush make -y /var/www/html/drush.make chdir=/var/www/html/
-#  sudo: yes
-#  when: drupal_site.stat.exists == false
+- name: Generate Drupal site with drush makefile.
+  command: drush make -y /var/www/html/drush.make.yml chdir=/var/www/html/
+  sudo: yes
+  when: drupal_site.stat.exists == false
 
 #- name: Install configured modules with drush.
 #  command: >
@@ -21,15 +23,15 @@
 #  when: drupal_site.stat.exists == false
 
 # Download Drupal using Git.
-- name: Check out Drupal Core to the default location.
-  git: >
-    repo={{ drupal_repo_url }}
-    version={{ drupal_core_version }}
-    update={{ drupal_keep_updated }}
-    dest={{ drupal_core_path }}
-    force=yes
-  sudo: yes
-  when: drupal_site.stat.exists == false
+#- name: Check out Drupal Core to the default location.
+#  git: >
+#    repo={{ drupal_repo_url }}
+#    version={{ drupal_core_version }}
+#    update={{ drupal_keep_updated }}
+#    dest={{ drupal_core_path }}
+#    force=yes
+#  sudo: yes
+#  when: drupal_site.stat.exists == false
 
 - name: setting permissions on drupal (sites/default/files)
   file: path=/var/www/html/sites/default/files state=directory mode=775 recurse=yes

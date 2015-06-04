@@ -22,16 +22,16 @@
   roles:
     - web
 
-- name: configure and deploy the cache servers
+- name: configure and deploy the front cache servers
   hosts: varnish
   remote_user: vagrant
 
   roles:
     - varnish
 
-- name: configure and deploy the loadbalance servers
-  hosts: lbservers
+- name: configure and deploy the db cache servers
+  hosts: memcached
   remote_user: vagrant
 
   roles:
-    - lb
+    - memcached
